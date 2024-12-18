@@ -8,7 +8,9 @@
         const itemId = urlParams.get("id");
 
         if (itemId) {
-          fetch(`https://card-inventory-scanner.netlify.app?id=${itemId}`)
+          fetch(
+            `https://script.google.com/macros/s/AKfycbxUuXFU29sbDBBmMtPV24PbIcFs6nDxTsZlcRHAA8l57Ge72f2BLRFwmXjSD3EHIHtrUQ/exec?id=${itemId}`
+          )
             .then((response) => response.json())
             .then((data) => {
               if (data.error) {
