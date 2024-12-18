@@ -9,24 +9,30 @@
 
         if (itemId) {
           fetch(
-            `https://script.google.com/macros/s/AKfycby_ocZuEwVwJ6QNTLjmGtYYVit1IhBpheLlcx2rR6-K5leiusKj1SqpxT5NOmwDTio7Ag/exec?id=${itemId}`
+            `https://script.google.com/macros/s/AKfycbxiOAstOpKVC2OdkCDEvYSPngPRdMH9wa6TPfGpwGO-nuj6tjoiyrXHSogf598qS0tu7w/exec?id=${itemId}`
           )
             .then((response) => response.json())
             .then((data) => {
-              if (data.error) {
-                document.getElementById("result").textContent = data.error;
-              } else {
+              if (data.success) {
+                // Assuming data.data contains the row data
+                const itemDetails = data.data; // This should contain the details of the item.
                 document.getElementById("result").innerHTML = `
-                                <h2>Item Details</h2>
-                                <p>Name: ${data.name}</p>
-                                <p>Cost: $${data.cost}</p>
-                            `;
+                  <h2>Item Details</h2>
+                  <p>Name: ${itemDetails[0]}</p> <!-- Adjust index based on your actual data -->
+                  <p>Cost: $${itemDetails[1]}</p> <!-- Adjust index based on your actual data -->
+                `;
+              } else {
+                document.getElementById("result").textContent =
+                  data.message || "Error fetching details";
               }
             })
             .catch((error) => {
               document.getElementById("result").textContent =
                 "Error fetching details";
             });
+        } else {
+          document.getElementById("result").textContent =
+            "No ID provided in the URL.";
         }
       }
 
