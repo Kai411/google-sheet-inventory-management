@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Item Details</title>
+    <script>
+      function fetchItemDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const itemId = urlParams.get("id");
+
+        if (itemId) {
+          fetch(`YOUR_WEB_APP_URL?id=${itemId}`)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                document.getElementById("result").textContent = data.error;
+              } else {
+                document.getElementById("result").innerHTML = `
+                                <h2>Item Details</h2>
+                                <p>Name: ${data.name}</p>
+                                <p>Cost: $${data.cost}</p>
+                            `;
+              }
+            })
+            .catch((error) => {
+              document.getElementById("result").textContent =
+                "Error fetching details";
+            });
+        }
+      }
+
+      window.onload = fetchItemDetails;
+    </script>
+  </head>
+  <body>
+    <div id="result">Loading...</div>
+  </body>
+</html>
