@@ -8,7 +8,7 @@
         const itemId = urlParams.get("id");
 
         if (itemId) {
-          fetch(`YOUR_WEB_APP_URL?id=${itemId}`)
+          fetch(`https://card-inventory-scanner.netlify.app?id=${itemId}`)
             .then((response) => response.json())
             .then((data) => {
               if (data.error) {
