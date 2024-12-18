@@ -17,7 +17,7 @@
                 // Assuming data.data contains the row data
                 const itemDetails = data.data; // This should contain the details of the item.
                 document.getElementById("result").innerHTML = `
-                  <h2>Item Details</h2>
+                  <h1>Item Details</h1>
                   <p>Name: ${itemDetails[1]}</p> <!-- Adjust index based on your actual data -->
                   <p>Number: ${itemDetails[2]}</p> <!-- Adjust index based on your actual data -->
                   <p>Rarity: ${itemDetails[3]}</p> <!-- Adjust index based on your actual data -->
@@ -46,6 +46,18 @@
     </script>
   </head>
   <body>
-    <div id="result">Loading...</div>
+    <div id="result" style="padding: 32px 54px">
+      <p style="font-size: 50px">Loading...</p>
+    </div>
   </body>
+
+  <style>
+    h1 {
+      font-size: 50px;
+    }
+
+    p {
+      font-size: 50px;
+    }
+  </style>
 </html>
